@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>数钱计算器 · SPAN</title>
-    <!-- 引入 html2canvas -->
+    <!-- 引入 html2canvas 稳定版本 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
         * {
@@ -28,9 +28,9 @@
             max-width: 1200px;
             width: 100%;
             background: white;
-            border-radius: 16px;               /* 从48px 调小 */
+            border-radius: 16px;
             box-shadow: 0 20px 40px rgba(0, 80, 150, 0.12);
-            padding: 28px 10px 36px;            /* 左右内边距改为10px，避免边框压缩内容 */
+            padding: 28px 10px 36px;
             border: 1px solid rgba(0, 140, 255, 0.15);
             position: relative;
             z-index: 1;
@@ -87,7 +87,7 @@
             font-weight: 400;
             line-height: 1;
             padding: 0 16px;
-            border-radius: 20px;                /* 从40px调小 */
+            border-radius: 20px;
             cursor: pointer;
             box-shadow: 0 4px 10px rgba(0, 110, 220, 0.06);
             transition: transform 0.1s ease;
@@ -113,7 +113,7 @@
             font-size: 1.05rem;
             font-weight: 520;
             padding: 10px 22px;
-            border-radius: 20px;                /* 调小 */
+            border-radius: 20px;
             box-shadow: 0 4px 10px rgba(0, 110, 220, 0.06);
             cursor: pointer;
             transition: transform 0.1s ease;
@@ -144,13 +144,13 @@
             z-index: 100;
             margin: 10px 0 32px 0;
             width: 100%;
-            border-radius: 16px;                 /* 统一 */
+            border-radius: 16px;
             background: transparent;
         }
 
         .total-banner {
             background: linear-gradient(105deg, #355FE1 0%, #273FAB 100%);
-            border-radius: 16px;                 /* 从100px调小 */
+            border-radius: 16px;
             padding: 16px 28px 18px;
             text-align: center;
             border: 2px solid rgba(255, 255, 255, 0.7);
@@ -176,20 +176,20 @@
         }
 
         .total-amount {
-            font-size: 2.8rem;          
+            font-size: 2.8rem;
             font-weight: 600;
             color: white;
             line-height: 1.2;
             letter-spacing: 0.5px;
-            white-space: nowrap;         
-            overflow: hidden;            
-            text-overflow: clip;          
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: clip;
             text-shadow: 0 2px 6px rgba(0,0,0,0.2);
             transition: font-size 0.1s ease;
         }
 
         .total-amount .currency-symbol {
-            font-size: 0.7em;            
+            font-size: 0.7em;
             margin-right: 4px;
             font-weight: 500;
         }
@@ -203,7 +203,7 @@
             background: #1a4b7a;
             color: white;
             padding: 12px 28px;
-            border-radius: 30px;            /* 稍小 */
+            border-radius: 30px;
             font-size: 1rem;
             font-weight: 500;
             box-shadow: 0 10px 25px rgba(0, 60, 120, 0.3);
@@ -227,13 +227,13 @@
             flex-wrap: wrap;
         }
 
-        /* ===== 固定面值区域 & 其他项目区域 添加边框 + 内边距10px ===== */
+        /* 固定面值区域 & 其他项目区域 添加边框 + 内边距10px */
         .fixed-section {
             flex: 1 1 400px;
             min-width: 300px;
-            border: 1px solid #c0d0e6;        /* 浅灰蓝边框 */
-            border-radius: 12px;               /* 圆角调小 */
-            padding: 10px;                      /* 内边距10px */
+            border: 1px solid #c0d0e6;
+            border-radius: 12px;
+            padding: 10px;
             background: rgba(255,255,255,0.4);
         }
 
@@ -250,7 +250,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 18px;               /* 稍减 */
+            margin-bottom: 18px;
             flex-wrap: nowrap;
             gap: 8px;
         }
@@ -277,7 +277,7 @@
             color: #1f6eb0;
             background: #e3f0ff;
             padding: 4px 16px;
-            border-radius: 12px;                /* 从60px调小 */
+            border-radius: 12px;
             line-height: 1.2;
             white-space: nowrap;
             border: 1px solid #99ccff;
@@ -292,7 +292,7 @@
             font-size: 1.05rem;
             font-weight: 520;
             padding: 8px 22px;
-            border-radius: 20px;                /* 调小 */
+            border-radius: 20px;
             box-shadow: 0 4px 10px rgba(0, 110, 220, 0.06);
             cursor: pointer;
             transition: transform 0.1s ease;
@@ -313,55 +313,55 @@
         .fixed-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 16px;                          /* 略减 */
+            gap: 16px;
         }
 
         /* 基础卡片样式 */
         .denom-card {
-            border-radius: 12px;                 /* 36px → 12px */
-            padding: 12px 18px 10px;              /* 上下内边距减小 → 高度缩小 */
-            border: 1.5px solid;                  /* 边框颜色由各面值单独控制 */
+            border-radius: 12px;
+            padding: 12px 18px 10px;
+            border: 1.5px solid;
             box-shadow: 0 5px 12px rgba(0, 85, 170, 0.04);
-            background-repeat: repeat;            /* 纹理重复 */
+            background-repeat: repeat;
         }
 
-        /* 人民币专属配色 + 地纹纹理 (每个面值不同底色/边框) */
-        .fixed-card[data-index="0"] { /* 100元 浅红 */
+        /* 人民币专属配色 + 地纹纹理 */
+        .fixed-card[data-index="0"] {
             border-color: #b52b2b;
             background-color: #ffe5e5;
             background-image: repeating-linear-gradient(45deg, rgba(180,40,40,0.03) 0px, rgba(180,40,40,0.03) 2px, transparent 2px, transparent 8px);
         }
-        .fixed-card[data-index="1"] { /* 50元 浅绿 */
+        .fixed-card[data-index="1"] {
             border-color: #2e7d32;
             background-color: #e0f0e0;
             background-image: repeating-linear-gradient(45deg, rgba(30,100,30,0.03) 0px, rgba(30,100,30,0.03) 2px, transparent 2px, transparent 8px);
         }
-        .fixed-card[data-index="2"] { /* 20元 浅黄 */
+        .fixed-card[data-index="2"] {
             border-color: #b78f1e;
             background-color: #fff7d4;
             background-image: repeating-linear-gradient(45deg, rgba(180,130,20,0.03) 0px, rgba(180,130,20,0.03) 2px, transparent 2px, transparent 8px);
         }
-        .fixed-card[data-index="3"] { /* 10元 浅蓝 */
+        .fixed-card[data-index="3"] {
             border-color: #1b6bb0;
             background-color: #d9ebff;
             background-image: repeating-linear-gradient(45deg, rgba(20,80,160,0.03) 0px, rgba(20,80,160,0.03) 2px, transparent 2px, transparent 8px);
         }
-        .fixed-card[data-index="4"] { /* 5元 浅紫 */
+        .fixed-card[data-index="4"] {
             border-color: #6a4c9c;
             background-color: #f0e2fc;
             background-image: repeating-linear-gradient(45deg, rgba(100,60,150,0.03) 0px, rgba(100,60,150,0.03) 2px, transparent 2px, transparent 8px);
         }
-        .fixed-card[data-index="5"] { /* 1元 浅橄榄绿 */
+        .fixed-card[data-index="5"] {
             border-color: #6b8e23;
             background-color: #f0f0c0;
             background-image: repeating-linear-gradient(45deg, rgba(80,100,30,0.03) 0px, rgba(80,100,30,0.03) 2px, transparent 2px, transparent 8px);
         }
-        .fixed-card[data-index="6"] { /* 5角 浅金黄 */
+        .fixed-card[data-index="6"] {
             border-color: #cc8b1f;
             background-color: #fcf0c0;
             background-image: repeating-linear-gradient(45deg, rgba(180,120,20,0.03) 0px, rgba(180,120,20,0.03) 2px, transparent 2px, transparent 8px);
         }
-        .fixed-card[data-index="7"] { /* 1角 浅棕 */
+        .fixed-card[data-index="7"] {
             border-color: #8b5a2b;
             background-color: #f0ddd6;
             background-image: repeating-linear-gradient(45deg, rgba(100,60,20,0.04) 0px, rgba(100,60,20,0.04) 2px, transparent 2px, transparent 8px);
@@ -371,7 +371,7 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            margin-bottom: 12px;                 /* 从16px减小 → 高度缩小 */
+            margin-bottom: 12px;
             flex-wrap: wrap;
         }
 
@@ -390,7 +390,7 @@
             font-weight: 350;
             height: 44px;
             width: 44px;
-            border-radius: 50%;                  /* 圆形保持 */
+            border-radius: 50%;
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -424,7 +424,7 @@
             height: 44px;
             background: white;
             border: 2px solid #cde2ff;
-            border-radius: 12px;                  /* 30px → 12px */
+            border-radius: 12px;
             text-align: center;
             font-size: 1.25rem;
             font-weight: 500;
@@ -449,7 +449,7 @@
             overflow: hidden;
             text-overflow: ellipsis;
             border-top: 1px dashed #b9d9ff;
-            margin-top: 4px;                      /* 略减 */
+            margin-top: 4px;
         }
 
         /* 分割线（小屏幕显示） */
@@ -467,7 +467,7 @@
 
         .other-card {
             background: #f3f9ff;
-            border-radius: 12px;                  /* 40px → 12px */
+            border-radius: 12px;
             padding: 16px 18px;
             border: 1.5px solid #b9d6fc;
             box-shadow: 0 5px 12px rgba(0, 70, 150, 0.04);
@@ -488,7 +488,7 @@
             height: 44px;
             background: white;
             border: 2px solid #cde2ff;
-            border-radius: 12px;                   /* 30px → 12px */
+            border-radius: 12px;
             padding: 0 12px;
             font-size: 1rem;
             color: #02457a;
@@ -506,7 +506,7 @@
             height: 44px;
             background: white;
             border: 2px solid #cde2ff;
-            border-radius: 12px;                   /* 30px → 12px */
+            border-radius: 12px;
             text-align: center;
             font-size: 1.1rem;
             font-weight: 500;
@@ -527,7 +527,7 @@
             right: -10px;
             width: 32px;
             height: 32px;
-            border-radius: 50%;                    /* 保持圆形 */
+            border-radius: 50%;
             background: #ff4d6d;
             color: white;
             border: 2px solid white;
@@ -572,7 +572,7 @@
             background: white;
             max-width: 450px;
             width: 90%;
-            border-radius: 16px;                   /* 56px → 16px */
+            border-radius: 16px;
             padding: 32px 28px;
             box-shadow: 0 30px 50px rgba(0,50,110,0.3);
             border: 2px solid #aacdff;
@@ -605,7 +605,7 @@
             font-size: 1.2rem;
             font-weight: 520;
             padding: 14px 32px;
-            border-radius: 30px;                    /* 保持微圆 */
+            border-radius: 30px;
             cursor: pointer;
             transition: transform 0.1s ease;
             min-width: 120px;
@@ -655,7 +655,7 @@
             max-height: 380px;
             overflow-y: auto;
             background: #f2f9ff;
-            border-radius: 16px;                    /* 40→16 */
+            border-radius: 16px;
             padding: 16px;
             margin-bottom: 24px;
         }
@@ -726,7 +726,7 @@
             margin: 4px 0;
         }
 
-        /* ---------- 移动端优化 (窄屏) ---------- */
+        /* 移动端优化 */
         @media (max-width: 600px) {
             .action-group {
                 display: none;
@@ -812,13 +812,13 @@
                 <button class="action-btn" id="historyBtn">历史记录</button>
                 <button class="action-btn" id="exportBtn">导出图片</button>
             </div>
-            <!-- 汉堡菜单容器 (移动端显示) -->
+            <!-- 汉堡菜单容器 -->
             <div class="hamburger-container" id="hamburgerContainer">
                 <button class="hamburger-btn" id="hamburgerToggle">☰</button>
             </div>
         </div>
 
-        <!-- 总金额区域 - 可点击复制 -->
+        <!-- 总金额区域 -->
         <div class="total-banner-wrapper" id="totalWrapper">
             <div class="total-banner" id="totalBanner">
                 <div class="total-label">总金额</div>
@@ -831,7 +831,7 @@
 
         <!-- 双栏内容区 -->
         <div class="main-content">
-            <!-- 左侧固定面值区域 (已添加边框) -->
+            <!-- 左侧固定面值区域 -->
             <div class="fixed-section">
                 <div class="fixed-header">
                     <div class="header-left">
@@ -843,11 +843,11 @@
                 <div class="fixed-grid" id="fixedGrid"></div>
             </div>
 
-            <!-- 右侧其他项目区域 (原“其他数值”改名) -->
+            <!-- 右侧其他项目区域 -->
             <div class="other-section">
                 <div class="other-header">
                     <div class="header-left">
-                        <h2>其他项目：</h2>                  <!-- 标题修改 -->
+                        <h2>其他项目：</h2>
                         <span class="region-total" id="otherRegionTotal">¥0.00</span>
                     </div>
                     <button class="section-btn" id="addOtherBtn">添加</button>
@@ -903,6 +903,15 @@
 
     <script>
         (function() {
+            // ---------- 环境识别函数 (新增) ----------
+            function getEnvironment() {
+                // 检测是否运行在 PakePlus 环境中（根据打包工具设置的 userAgent 关键字）
+                if (navigator.userAgent.includes('PakePlus')) {
+                    return 'pakeplus';
+                }
+                return 'browser';
+            }
+
             // ---------- 固定面额 ----------
             const fixedDenoms = [
                 { label: '100元', value: 10000 },
@@ -1000,7 +1009,7 @@
                     if (Array.isArray(data.otherItems)) {
                         otherItems = data.otherItems.map(item => ({
                             id: item.id || nextOtherId++,
-                            name: item.name || item.label || '其他项',    // 旧数据统一转为“其他项”
+                            name: item.name || item.label || '其他项',
                             amount: Math.max(0, Math.round(Number(item.amount) || 0))
                         }));
                     }
@@ -1182,7 +1191,6 @@
                     const id = parseInt(card.dataset.otherId, 10);
                     const item = otherItems.find(it => it.id === id);
                     if (!item) return;
-                    // 默认空白时改为“其他项”
                     item.name = target.value.trim() || '其他项';
                     saveToCache();
                 });
@@ -1243,7 +1251,7 @@
                 });
             }
 
-            // ---------- 导出图片功能 ----------
+            // ---------- 导出图片功能（增强版：环境识别 + Blob下载 + 错误捕获）----------
             function formatDate() {
                 const d = new Date();
                 const year = d.getFullYear();
@@ -1283,11 +1291,47 @@
                     <div class="title">SPAN数钱计算器</div>
                     <div class="sub-title">固定面值： ¥${fixedTotal}</div>
                     ${fixedLines}
-                    <div class="sub-title">其他项目： ¥${otherTotal}</div>   <!-- 标题同步 -->
+                    <div class="sub-title">其他项目： ¥${otherTotal}</div>
                     ${otherLines}
                     <div class="total-row">总金额：${totalYuan}元</div>
                     <div class="date-row">时间：${dateStr}</div>
                 `;
+            }
+
+            // 核心导出函数 —— 自适应环境
+            function exportImage() {
+                const ticketDiv = document.getElementById('ticketContainer');
+                ticketDiv.innerHTML = buildTicketHTML();
+
+                const env = getEnvironment();
+                // 浏览器环境用较高分辨率，PakePlus 环境降低分辨率减少内存压力
+                const scale = env === 'pakeplus' ? 1.2 : 1.8;
+
+                html2canvas(ticketDiv, {
+                    scale: scale,
+                    backgroundColor: '#ffffff',
+                    allowTaint: false,
+                    useCORS: true,
+                    logging: false
+                }).then(canvas => {
+                    canvas.toBlob(blob => {
+                        if (blob) {
+                            const url = URL.createObjectURL(blob);
+                            const link = document.createElement('a');
+                            link.href = url;
+                            link.download = `数钱小票_${formatDate().replace(/:/g, '-')}.png`;
+                            document.body.appendChild(link);
+                            link.click();
+                            document.body.removeChild(link);
+                            URL.revokeObjectURL(url);
+                        } else {
+                            alert('图片生成失败，请重试。');
+                        }
+                    }, 'image/png');
+                }).catch(err => {
+                    console.error('导出图片出错:', err);
+                    alert('导出图片时遇到问题，请稍后重试或使用系统截图功能。');
+                });
             }
 
             // 弹窗函数
@@ -1304,25 +1348,6 @@
                     `<div class="history-item"><span>💰 ${s.total} 元</span><span class="history-time">${s.time}</span></div>`
                 ).join('') || '<div class="history-item">暂无记录</div>';
                 document.getElementById('historyModal').style.display = 'flex';
-            }
-
-            function exportImage() {
-                const ticketDiv = document.getElementById('ticketContainer');
-                ticketDiv.innerHTML = buildTicketHTML();
-                html2canvas(ticketDiv, {
-                    scale: 2,
-                    backgroundColor: '#ffffff',
-                    allowTaint: false,
-                    useCORS: true,
-                    logging: false
-                }).then(canvas => {
-                    const link = document.createElement('a');
-                    link.download = `数钱小票_${formatDate().replace(/:/g,'-')}.png`;
-                    link.href = canvas.toDataURL('image/png');
-                    link.click();
-                }).catch(err => {
-                    alert('图片导出失败，可稍后重试。\n' + err);
-                });
             }
 
             function closeMobileModal() {
@@ -1375,7 +1400,6 @@
                 });
 
                 document.getElementById('addOtherBtn').addEventListener('click', () => {
-                    // 默认名称改为“其他项”
                     otherItems.push({ id: nextOtherId++, name: '其他项', amount: 0 });
                     refreshAllUI();
                 });
