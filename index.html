@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>数钱计算器 · SPAN </title>
+    <title>数钱计算器 · SPAN</title>
     <!-- 引入 html2canvas -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
@@ -28,9 +28,9 @@
             max-width: 1200px;
             width: 100%;
             background: white;
-            border-radius: 48px 48px 40px 40px;
+            border-radius: 16px;               /* 从48px 调小 */
             box-shadow: 0 20px 40px rgba(0, 80, 150, 0.12);
-            padding: 28px 24px 36px;
+            padding: 28px 10px 36px;            /* 左右内边距改为10px，避免边框压缩内容 */
             border: 1px solid rgba(0, 140, 255, 0.15);
             position: relative;
             z-index: 1;
@@ -87,7 +87,7 @@
             font-weight: 400;
             line-height: 1;
             padding: 0 16px;
-            border-radius: 40px;
+            border-radius: 20px;                /* 从40px调小 */
             cursor: pointer;
             box-shadow: 0 4px 10px rgba(0, 110, 220, 0.06);
             transition: transform 0.1s ease;
@@ -113,7 +113,7 @@
             font-size: 1.05rem;
             font-weight: 520;
             padding: 10px 22px;
-            border-radius: 40px;
+            border-radius: 20px;                /* 调小 */
             box-shadow: 0 4px 10px rgba(0, 110, 220, 0.06);
             cursor: pointer;
             transition: transform 0.1s ease;
@@ -144,13 +144,13 @@
             z-index: 100;
             margin: 10px 0 32px 0;
             width: 100%;
-            border-radius: 100px;
+            border-radius: 16px;                 /* 统一 */
             background: transparent;
         }
 
         .total-banner {
             background: linear-gradient(105deg, #355FE1 0%, #273FAB 100%);
-            border-radius: 100px;
+            border-radius: 16px;                 /* 从100px调小 */
             padding: 16px 28px 18px;
             text-align: center;
             border: 2px solid rgba(255, 255, 255, 0.7);
@@ -176,20 +176,20 @@
         }
 
         .total-amount {
-            font-size: 2.8rem;          /* 默认字号，JS会根据数字长度调整 */
+            font-size: 2.8rem;          
             font-weight: 600;
             color: white;
             line-height: 1.2;
             letter-spacing: 0.5px;
-            white-space: nowrap;         /* 强制不换行 */
-            overflow: hidden;            /* 防止溢出时影响布局，但字号调整后一般不会溢出 */
-            text-overflow: clip;          /* 不显示省略号，字号缩小后内容完整可见 */
+            white-space: nowrap;         
+            overflow: hidden;            
+            text-overflow: clip;          
             text-shadow: 0 2px 6px rgba(0,0,0,0.2);
-            transition: font-size 0.1s ease; /* 平滑变化 */
+            transition: font-size 0.1s ease;
         }
 
         .total-amount .currency-symbol {
-            font-size: 0.7em;            /* 相对于父元素，保持视觉比例 */
+            font-size: 0.7em;            
             margin-right: 4px;
             font-weight: 500;
         }
@@ -203,7 +203,7 @@
             background: #1a4b7a;
             color: white;
             padding: 12px 28px;
-            border-radius: 60px;
+            border-radius: 30px;            /* 稍小 */
             font-size: 1rem;
             font-weight: 500;
             box-shadow: 0 10px 25px rgba(0, 60, 120, 0.3);
@@ -227,22 +227,30 @@
             flex-wrap: wrap;
         }
 
+        /* ===== 固定面值区域 & 其他项目区域 添加边框 + 内边距10px ===== */
         .fixed-section {
             flex: 1 1 400px;
             min-width: 300px;
+            border: 1px solid #c0d0e6;        /* 浅灰蓝边框 */
+            border-radius: 12px;               /* 圆角调小 */
+            padding: 10px;                      /* 内边距10px */
+            background: rgba(255,255,255,0.4);
         }
 
         .other-section {
             flex: 1 1 350px;
             min-width: 280px;
+            border: 1px solid #c0d0e6;
+            border-radius: 12px;
+            padding: 10px;
+            background: rgba(255,255,255,0.4);
         }
 
-        /* 区域头部样式 */
         .fixed-header, .other-header {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 24px;
+            margin-bottom: 18px;               /* 稍减 */
             flex-wrap: nowrap;
             gap: 8px;
         }
@@ -269,7 +277,7 @@
             color: #1f6eb0;
             background: #e3f0ff;
             padding: 4px 16px;
-            border-radius: 60px;
+            border-radius: 12px;                /* 从60px调小 */
             line-height: 1.2;
             white-space: nowrap;
             border: 1px solid #99ccff;
@@ -284,7 +292,7 @@
             font-size: 1.05rem;
             font-weight: 520;
             padding: 8px 22px;
-            border-radius: 40px;
+            border-radius: 20px;                /* 调小 */
             box-shadow: 0 4px 10px rgba(0, 110, 220, 0.06);
             cursor: pointer;
             transition: transform 0.1s ease;
@@ -305,22 +313,65 @@
         .fixed-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 18px;
+            gap: 16px;                          /* 略减 */
         }
 
+        /* 基础卡片样式 */
         .denom-card {
-            background: #f9fcff;
-            border-radius: 36px;
-            padding: 18px 18px 14px;
-            border: 1.5px solid #d1e7ff;
+            border-radius: 12px;                 /* 36px → 12px */
+            padding: 12px 18px 10px;              /* 上下内边距减小 → 高度缩小 */
+            border: 1.5px solid;                  /* 边框颜色由各面值单独控制 */
             box-shadow: 0 5px 12px rgba(0, 85, 170, 0.04);
+            background-repeat: repeat;            /* 纹理重复 */
+        }
+
+        /* 人民币专属配色 + 地纹纹理 (每个面值不同底色/边框) */
+        .fixed-card[data-index="0"] { /* 100元 浅红 */
+            border-color: #b52b2b;
+            background-color: #ffe5e5;
+            background-image: repeating-linear-gradient(45deg, rgba(180,40,40,0.03) 0px, rgba(180,40,40,0.03) 2px, transparent 2px, transparent 8px);
+        }
+        .fixed-card[data-index="1"] { /* 50元 浅绿 */
+            border-color: #2e7d32;
+            background-color: #e0f0e0;
+            background-image: repeating-linear-gradient(45deg, rgba(30,100,30,0.03) 0px, rgba(30,100,30,0.03) 2px, transparent 2px, transparent 8px);
+        }
+        .fixed-card[data-index="2"] { /* 20元 浅黄 */
+            border-color: #b78f1e;
+            background-color: #fff7d4;
+            background-image: repeating-linear-gradient(45deg, rgba(180,130,20,0.03) 0px, rgba(180,130,20,0.03) 2px, transparent 2px, transparent 8px);
+        }
+        .fixed-card[data-index="3"] { /* 10元 浅蓝 */
+            border-color: #1b6bb0;
+            background-color: #d9ebff;
+            background-image: repeating-linear-gradient(45deg, rgba(20,80,160,0.03) 0px, rgba(20,80,160,0.03) 2px, transparent 2px, transparent 8px);
+        }
+        .fixed-card[data-index="4"] { /* 5元 浅紫 */
+            border-color: #6a4c9c;
+            background-color: #f0e2fc;
+            background-image: repeating-linear-gradient(45deg, rgba(100,60,150,0.03) 0px, rgba(100,60,150,0.03) 2px, transparent 2px, transparent 8px);
+        }
+        .fixed-card[data-index="5"] { /* 1元 浅橄榄绿 */
+            border-color: #6b8e23;
+            background-color: #f0f0c0;
+            background-image: repeating-linear-gradient(45deg, rgba(80,100,30,0.03) 0px, rgba(80,100,30,0.03) 2px, transparent 2px, transparent 8px);
+        }
+        .fixed-card[data-index="6"] { /* 5角 浅金黄 */
+            border-color: #cc8b1f;
+            background-color: #fcf0c0;
+            background-image: repeating-linear-gradient(45deg, rgba(180,120,20,0.03) 0px, rgba(180,120,20,0.03) 2px, transparent 2px, transparent 8px);
+        }
+        .fixed-card[data-index="7"] { /* 1角 浅棕 */
+            border-color: #8b5a2b;
+            background-color: #f0ddd6;
+            background-image: repeating-linear-gradient(45deg, rgba(100,60,20,0.04) 0px, rgba(100,60,20,0.04) 2px, transparent 2px, transparent 8px);
         }
 
         .card-row {
             display: flex;
             align-items: center;
             gap: 8px;
-            margin-bottom: 16px;
+            margin-bottom: 12px;                 /* 从16px减小 → 高度缩小 */
             flex-wrap: wrap;
         }
 
@@ -339,7 +390,7 @@
             font-weight: 350;
             height: 44px;
             width: 44px;
-            border-radius: 50%;
+            border-radius: 50%;                  /* 圆形保持 */
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -373,7 +424,7 @@
             height: 44px;
             background: white;
             border: 2px solid #cde2ff;
-            border-radius: 30px;
+            border-radius: 12px;                  /* 30px → 12px */
             text-align: center;
             font-size: 1.25rem;
             font-weight: 500;
@@ -398,7 +449,7 @@
             overflow: hidden;
             text-overflow: ellipsis;
             border-top: 1px dashed #b9d9ff;
-            margin-top: 8px;
+            margin-top: 4px;                      /* 略减 */
         }
 
         /* 分割线（小屏幕显示） */
@@ -411,12 +462,12 @@
         .other-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 18px;
+            gap: 16px;
         }
 
         .other-card {
             background: #f3f9ff;
-            border-radius: 40px;
+            border-radius: 12px;                  /* 40px → 12px */
             padding: 16px 18px;
             border: 1.5px solid #b9d6fc;
             box-shadow: 0 5px 12px rgba(0, 70, 150, 0.04);
@@ -437,7 +488,7 @@
             height: 44px;
             background: white;
             border: 2px solid #cde2ff;
-            border-radius: 30px;
+            border-radius: 12px;                   /* 30px → 12px */
             padding: 0 12px;
             font-size: 1rem;
             color: #02457a;
@@ -455,7 +506,7 @@
             height: 44px;
             background: white;
             border: 2px solid #cde2ff;
-            border-radius: 30px;
+            border-radius: 12px;                   /* 30px → 12px */
             text-align: center;
             font-size: 1.1rem;
             font-weight: 500;
@@ -476,7 +527,7 @@
             right: -10px;
             width: 32px;
             height: 32px;
-            border-radius: 50%;
+            border-radius: 50%;                    /* 保持圆形 */
             background: #ff4d6d;
             color: white;
             border: 2px solid white;
@@ -521,7 +572,7 @@
             background: white;
             max-width: 450px;
             width: 90%;
-            border-radius: 56px;
+            border-radius: 16px;                   /* 56px → 16px */
             padding: 32px 28px;
             box-shadow: 0 30px 50px rgba(0,50,110,0.3);
             border: 2px solid #aacdff;
@@ -554,7 +605,7 @@
             font-size: 1.2rem;
             font-weight: 520;
             padding: 14px 32px;
-            border-radius: 50px;
+            border-radius: 30px;                    /* 保持微圆 */
             cursor: pointer;
             transition: transform 0.1s ease;
             min-width: 120px;
@@ -604,7 +655,7 @@
             max-height: 380px;
             overflow-y: auto;
             background: #f2f9ff;
-            border-radius: 40px;
+            border-radius: 16px;                    /* 40→16 */
             padding: 16px;
             margin-bottom: 24px;
         }
@@ -677,14 +728,12 @@
 
         /* ---------- 移动端优化 (窄屏) ---------- */
         @media (max-width: 600px) {
-            /* 汉堡菜单出现，隐藏原始按钮组 */
             .action-group {
                 display: none;
             }
             .hamburger-container {
                 display: block;
             }
-            /* 调整标题字体，防止换行 */
             h1 {
                 font-size: 1.6rem;
                 padding-left: 8px;
@@ -697,7 +746,6 @@
             }
         }
 
-        /* 针对极窄屏进一步压缩标题栏 (固定/其他) */
         @media (max-width: 500px) {
             .fixed-header h2, .other-header h2 {
                 font-size: 1.3rem;
@@ -743,7 +791,6 @@
             }
         }
 
-        /* 小屏幕双栏变单栏原有样式保留 */
         @media (max-width: 768px) {
             .divider {
                 display: block;
@@ -784,7 +831,7 @@
 
         <!-- 双栏内容区 -->
         <div class="main-content">
-            <!-- 左侧固定面值区域 -->
+            <!-- 左侧固定面值区域 (已添加边框) -->
             <div class="fixed-section">
                 <div class="fixed-header">
                     <div class="header-left">
@@ -796,11 +843,11 @@
                 <div class="fixed-grid" id="fixedGrid"></div>
             </div>
 
-            <!-- 右侧其他数值区域 -->
+            <!-- 右侧其他项目区域 (原“其他数值”改名) -->
             <div class="other-section">
                 <div class="other-header">
                     <div class="header-left">
-                        <h2>其他数值：</h2>
+                        <h2>其他项目：</h2>                  <!-- 标题修改 -->
                         <span class="region-total" id="otherRegionTotal">¥0.00</span>
                     </div>
                     <button class="section-btn" id="addOtherBtn">添加</button>
@@ -835,7 +882,7 @@
             </div>
         </div>
 
-        <!-- 移动端操作菜单弹窗 (汉堡图标点击后显示) -->
+        <!-- 移动端操作菜单弹窗 -->
         <div id="mobileActionModal" class="modal">
             <div class="modal-card">
                 <h3 style="font-size:1.5rem;">操作菜单</h3>
@@ -869,7 +916,7 @@
             ];
             let fixedCounts = new Array(fixedDenoms.length).fill(0);
 
-            // ---------- 其他数值 ----------
+            // ---------- 其他项目 ----------
             let otherItems = [];
             let nextOtherId = 1000;
 
@@ -913,12 +960,12 @@
                 document.getElementById('otherRegionTotal').textContent = '¥' + calcOtherRegionYuan();
             }
 
-            // 根据数字长度调整总金额字号，防止换行
+            // 根据数字长度调整总金额字号
             function adjustTotalFontSize() {
                 const totalSpan = document.getElementById('totalDisplay');
                 const totalAmountDiv = document.getElementById('totalAmount');
                 if (!totalSpan || !totalAmountDiv) return;
-                const text = totalSpan.textContent; // 例如 "1234567.89"
+                const text = totalSpan.textContent;
                 const len = text.length;
                 let fontSize;
                 if (len <= 8) fontSize = '2.8rem';
@@ -931,7 +978,7 @@
 
             function refreshTotalOnly() {
                 document.getElementById('totalDisplay').textContent = calcTotalYuan();
-                adjustTotalFontSize();  // 动态调整字号
+                adjustTotalFontSize();
             }
 
             // 缓存读写
@@ -953,7 +1000,7 @@
                     if (Array.isArray(data.otherItems)) {
                         otherItems = data.otherItems.map(item => ({
                             id: item.id || nextOtherId++,
-                            name: item.name || item.label || '其他',
+                            name: item.name || item.label || '其他项',    // 旧数据统一转为“其他项”
                             amount: Math.max(0, Math.round(Number(item.amount) || 0))
                         }));
                     }
@@ -1135,7 +1182,8 @@
                     const id = parseInt(card.dataset.otherId, 10);
                     const item = otherItems.find(it => it.id === id);
                     if (!item) return;
-                    item.name = target.value.trim() || '其他';
+                    // 默认空白时改为“其他项”
+                    item.name = target.value.trim() || '其他项';
                     saveToCache();
                 });
 
@@ -1227,7 +1275,7 @@
                 for (let item of otherItems) {
                     if (item.amount === 0) continue;
                     const amountYuan = (item.amount / 100).toFixed(2);
-                    otherLines += `<div class="item-row"><span>${item.name || '其他'}</span><span>${amountYuan}元</span></div>`;
+                    otherLines += `<div class="item-row"><span>${item.name || '其他项'}</span><span>${amountYuan}元</span></div>`;
                 }
                 if (otherLines === '') otherLines = '<div class="item-row">(无)</div>';
 
@@ -1235,14 +1283,14 @@
                     <div class="title">SPAN数钱计算器</div>
                     <div class="sub-title">固定面值： ¥${fixedTotal}</div>
                     ${fixedLines}
-                    <div class="sub-title">其他数值： ¥${otherTotal}</div>
+                    <div class="sub-title">其他项目： ¥${otherTotal}</div>   <!-- 标题同步 -->
                     ${otherLines}
                     <div class="total-row">总金额：${totalYuan}元</div>
                     <div class="date-row">时间：${dateStr}</div>
                 `;
             }
 
-            // ----- 提取命名函数，供原始按钮和弹窗菜单共用 -----
+            // 弹窗函数
             function showResetModal() {
                 document.getElementById('confirmModal').style.display = 'flex';
             }
@@ -1277,25 +1325,22 @@
                 });
             }
 
-            // 关闭移动端操作弹窗
             function closeMobileModal() {
                 document.getElementById('mobileActionModal').style.display = 'none';
             }
 
-            // 汉堡菜单逻辑 (改为弹窗)
+            // 汉堡菜单
             function setupHamburgerMenu() {
                 const hamburgerBtn = document.getElementById('hamburgerToggle');
                 const mobileModal = document.getElementById('mobileActionModal');
 
                 if (!hamburgerBtn || !mobileModal) return;
 
-                // 点击汉堡图标显示弹窗
                 hamburgerBtn.addEventListener('click', (e) => {
                     e.stopPropagation();
                     mobileModal.style.display = 'flex';
                 });
 
-                // 绑定弹窗内按钮事件
                 document.getElementById('mobileResetBtn').addEventListener('click', () => {
                     showResetModal();
                     closeMobileModal();
@@ -1310,34 +1355,31 @@
                 });
                 document.getElementById('closeMobileModal').addEventListener('click', closeMobileModal);
 
-                // 点击背景关闭
                 window.addEventListener('click', (e) => {
                     if (e.target === mobileModal) closeMobileModal();
                 });
             }
 
-            // 重新绑定原始按钮事件
+            // 重新绑定原始按钮
             function rebindOriginalButtons() {
                 document.getElementById('resetAllBtn').addEventListener('click', showResetModal);
                 document.getElementById('historyBtn').addEventListener('click', showHistoryModal);
                 document.getElementById('exportBtn').addEventListener('click', exportImage);
             }
 
-            // 全局按钮事件（除三个主按钮外）
+            // 全局按钮事件
             function setupGlobalEvents() {
-                // 固定面值归零
                 document.getElementById('resetFixedBtn').addEventListener('click', () => {
                     fixedCounts.fill(0);
                     refreshAllUI();
                 });
 
-                // 添加其他数值
                 document.getElementById('addOtherBtn').addEventListener('click', () => {
-                    otherItems.push({ id: nextOtherId++, name: '其他', amount: 0 });
+                    // 默认名称改为“其他项”
+                    otherItems.push({ id: nextOtherId++, name: '其他项', amount: 0 });
                     refreshAllUI();
                 });
 
-                // 初始化确认弹窗控制
                 const confirmModal = document.getElementById('confirmModal');
                 document.getElementById('cancelInitBtn').addEventListener('click', () => { confirmModal.style.display = 'none'; });
                 document.getElementById('confirmInitBtn').addEventListener('click', () => {
@@ -1346,7 +1388,6 @@
                 });
                 window.addEventListener('click', (e) => { if (e.target === confirmModal) confirmModal.style.display = 'none'; });
 
-                // 历史记录弹窗关闭
                 const historyModal = document.getElementById('historyModal');
                 document.getElementById('closeModalBtn').addEventListener('click', () => { historyModal.style.display = 'none'; });
                 window.addEventListener('click', (e) => { if (e.target === historyModal) historyModal.style.display = 'none'; });
@@ -1356,17 +1397,14 @@
                 loadFromCache();
                 renderFixedGrid();
                 renderOtherGrid();
-                refreshTotalOnly();      // 包含字号调整
+                refreshTotalOnly();
                 updateRegionTotals();
                 setupFixedEvents();
                 setupOtherEvents();
                 setupCopyTotal();
 
-                // 重新绑定原始三大按钮
                 rebindOriginalButtons();
-                // 设置其他全局事件
                 setupGlobalEvents();
-                // 设置汉堡菜单 (弹窗)
                 setupHamburgerMenu();
             }
 
